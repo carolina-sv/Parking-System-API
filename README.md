@@ -17,7 +17,7 @@
 
 ## 🛠️ Technologies Used
 
-- **C# / .NET 6** – API backend
+- **C# / .NET 9** – API backend
 - **Entity Framework Core** – Data management
 - **SQLite / SQL Server** – Database (adjustable)
 - **GitHub** – Version control
