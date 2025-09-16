@@ -17,11 +17,10 @@
 
 ## 🛠️ Technologies Used
 
-- **C# / .NET 9** – API backend
-- **Entity Framework Core** – Data management
-- **SQLite / SQL Server** – Database (adjustable)
+- **C# / .NET 9** – Backend
 - **GitHub** – Version control
-- **Visual Studio / VS Code** – Development IDE
+- **Visual Studio** – Development IDE
+- **UI Swagger** - Api endpoint
 
 ---
 
