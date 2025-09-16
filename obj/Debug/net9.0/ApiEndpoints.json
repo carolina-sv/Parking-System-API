@@ -1,0 +1,54 @@
+[
+  {
+    "ContainingType": "ParkingSystemApi.Controllers.EstacionamentoController",
+    "Method": "GetVeiculos",
+    "RelativePath": "api/Estacionamento",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ParkingSystemApi.Models.Veiculo, ParkingSystemApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ParkingSystemApi.Controllers.EstacionamentoController",
+    "Method": "AdicionarVeiculo",
+    "RelativePath": "api/Estacionamento/{placa}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "placa",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ParkingSystemApi.Controllers.EstacionamentoController",
+    "Method": "RemoverVeiculo",
+    "RelativePath": "api/Estacionamento/{placa}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "placa",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

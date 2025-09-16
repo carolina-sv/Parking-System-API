@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <title>Estacionamento</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background: url('carro-background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        #overlay {
+            background: rgba(0,0,0,0.6);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 150px;
+            gap: 20px;
+        }
+
+        header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: #6CC644;
+            margin: 0;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        main {
+            background: rgba(50, 50, 80, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+        }
+
+        .btn-orbitron {
+            font-family: 'Orbitron', sans-serif;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #6CC644;
+            color: #1e1e2f;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+
+            .btn-orbitron:hover {
+                background: #5BB13B;
+            }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.6);
+            padding: 8px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+        }
+
+            li button {
+                font-family: 'Orbitron', sans-serif;
+                background: #ff4d4d;
+                color: #fff;
+                padding: 5px 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+
+                li button:hover {
+                    background: #bf1f1f;
+                }
+
+        .modal {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 60%; 
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background-color: rgba(50,50,80,0.95);
+            padding: 20px;
+            border-radius: 10px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 0 20px #000;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .close {
+            color: #fff;
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            margin-top: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay">
+        <header>Estacionamento</header>
+        <main>
+            <button class="btn-orbitron" onclick="abrirModal()">Adicionar Veículo</button>
+
+            <h2>Veículos no estacionamento:</h2>
+            <ul id="lista-veiculos"></ul>
+        </main>
+    </div>
+
+    <div id="modal" class="modal">
+        <span class="close" onclick="fecharModal()">&times;</span>
+        <h3>Digite a placa do veículo</h3>
+        <input type="text" id="placaInput" placeholder="Ex: ABC1234">
+        <br>
+        <button class="btn-orbitron" onclick="adicionarVeiculoModal()">Adicionar</button>
+    </div>
+
+    <script>
+        const apiUrl = 'http://localhost:5163/api/estacionamento';
+
+        function abrirModal() {
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function fecharModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('placaInput').value = '';
+        }
+
+        async function listarVeiculos() {
+            const res = await fetch(apiUrl);
+            const veiculos = await res.json();
+            const lista = document.getElementById('lista-veiculos');
+            lista.innerHTML = '';
+            veiculos.forEach(v => {
+                const li = document.createElement('li');
+                li.textContent = `${v.placa} - Entrou em: ${new Date(v.entrada).toLocaleString()}`;
+
+                const btnRemover = document.createElement('button');
+                btnRemover.textContent = 'Remover';
+                btnRemover.onclick = () => removerVeiculo(v.placa);
+
+                li.appendChild(btnRemover);
+                lista.appendChild(li);
+            });
+        }
+
+        async function adicionarVeiculoModal() {
+            const placa = document.getElementById('placaInput').value;
+            if (!placa) return alert('Digite a placa!');
+            const res = await fetch(`${apiUrl}/${placa}`, { method: 'POST' });
+            if (res.ok) {
+                alert(`Veículo ${placa} adicionado!`);
+                fecharModal();
+                listarVeiculos();
+            }
+        }
+
+        async function removerVeiculo(placa) {
+            const res = await fetch(`${apiUrl}/${placa}`, { method: 'DELETE' });
+            if (res.ok) {
+                const data = await res.json();
+                alert(`Veículo ${placa} removido. Valor: R$ ${data.valorPagar}`);
+                listarVeiculos();
+            } else {
+                alert('Veículo não encontrado!');
+            }
+        }
+
+        listarVeiculos();
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) {
+                fecharModal();
+            }
+        }
+    </script>
+</body>
+</html>
