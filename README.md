@@ -6,7 +6,8 @@
 ---
 
 # Interface
-<img width="414" height="553" alt="githubtetris" src="https://github.com/user-attachments/assets/4d619400-4416-4f67-b564-3da45c9ecfd9" />
+
+<img width="883" height="968" alt="InterfaceProject" src="https://github.com/user-attachments/assets/dd16cd46-a30c-40a2-b1ba-4a4dc75675d0" />
 
 ---
 
