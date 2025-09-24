@@ -5,6 +5,11 @@
 
 ---
 
+# Interface
+<img width="414" height="553" alt="githubtetris" src="https://github.com/user-attachments/assets/4d619400-4416-4f67-b564-3da45c9ecfd9" />
+
+---
+
 ## 🔹 Features
 
 - Add and remove vehicles
