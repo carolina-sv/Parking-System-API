@@ -1,7 +1,7 @@
 
 # 🚗 Parking System API
 
-**Parking System API** is a simple and efficient backend service to manage vehicle parking. Track vehicles, record entry and exit times, and calculate parking fees with ease.
+**Parking System API** is a simple and efficient  service to manage vehicle parking. Track vehicles, record entry and exit times, and calculate parking fees with ease.
 
 ---
 
