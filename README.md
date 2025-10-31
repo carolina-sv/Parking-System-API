@@ -1,92 +1,46 @@
-
 # 🚗 Parking System API
 
-**Parking System API** is a simple and efficient  service to manage vehicle parking. Track vehicles, record entry and exit times, and calculate parking fees with ease.
+Parking System API é um serviço simples e eficiente para gerenciar o estacionamento de veículos.  
+Com ele, é possível registrar entradas e saídas, acompanhar veículos estacionados e calcular automaticamente as tarifas de estacionamento.
 
 ---
 
-# Interface
+## 🖥️ Interface
 
 <img width="883" height="968" alt="InterfaceProject" src="https://github.com/user-attachments/assets/dd16cd46-a30c-40a2-b1ba-4a4dc75675d0" />
 
 ---
 
-## 🔹 Features
+## 🔹 Funcionalidades
 
-- Add and remove vehicles
-- Track entry and exit timestamps
-- Calculate parking fees automatically
-- View all vehicles currently parked
-- Simple REST API endpoints
-
----
-
-## 🛠️ Technologies Used
-
-- **C# / .NET 9** – Backend
-- **GitHub** – Version control
-- **Visual Studio** – Development IDE
-- **UI Swagger** - Api endpoint
+- Adicionar e remover veículos  
+- Registrar horários de entrada e saída  
+- Calcular automaticamente o valor do estacionamento  
+- Visualizar todos os veículos atualmente estacionados  
+- API REST simples e intuitiva  
 
 ---
 
-## ⚡ API Endpoints
+## 🛠️ Tecnologias Utilizadas
 
-| Endpoint               | Method | Description                     |
-|------------------------|--------|---------------------------------|
-| `/api/estacionamento`  | GET    | List all parked vehicles        |
-| `/api/estacionamento/{plate}` | POST   | Add a new vehicle             |
-| `/api/estacionamento/{plate}` | DELETE | Remove a vehicle and get fee  |
+- **C# / .NET 9** – Backend  
+- **Swagger UI** – Interface para testar os endpoints da API  
 
 ---
 
-## 🚀 How to Run
+## ⚡ Endpoints da API
 
-1. Clone this repository:
-
-```bash
-git clone https://github.com/carolina-sv/Parking-System-API.git
-````
-
-2. Navigate to the project folder:
-
-```bash
-cd ParkingSystem/ParkingSystemApi
-```
-
-3. Restore dependencies and build:
-
-```bash
-dotnet restore
-dotnet build
-```
-
-4. Run the API:
-
-```bash
-dotnet run
-```
-
-5. The API will be available at `http://localhost:5163`.
+| Endpoint                      | Método | Descrição                              |
+|-------------------------------|--------|----------------------------------------|
+| `/api/estacionamento`         | GET    | Lista todos os veículos estacionados   |
+| `/api/estacionamento/{placa}` | POST   | Adiciona um novo veículo               |
+| `/api/estacionamento/{placa}` | DELETE | Remove um veículo e calcula a tarifa   |
 
 ---
 
-## 📝 Usage
+## 🚀 Como Executar o Projeto
 
-You can test the API using **Postman** or any HTTP client:
+1. **Clone o repositório:**
 
-* **GET** all vehicles: `http://localhost:5163/api/estacionamento`
-* **POST** a vehicle: `http://localhost:5163/api/estacionamento/ABC1234`
-* **DELETE** a vehicle: `http://localhost:5163/api/estacionamento/ABC1234`
-
----
-
-## 💡 Contributing
-
-Feel free to fork this repository and submit pull requests. Any contribution is welcome!
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
+   ```bash
+   git clone https://github.com/carolina-sv/Parking-System-API.git
